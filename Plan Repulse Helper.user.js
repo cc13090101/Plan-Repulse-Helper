@@ -9,7 +9,7 @@
 // @match        https://jrol.xyz/game/game.php*
 // @match        https://jrol.xyz/game/index.php*
 // @homepageURL  https://github.com/cc13090101/Bondage-College-Helper
-// @downloadURL  https://github.com/cc13090101/Bondage-College-Helper/raw/master/Bondage-College-Helper.user.js
+// @downloadURL  https://github.com/cc13090101/Bondage-College-Helper/blob/master/Bondage-College-Helper.user.js
 // ==/UserScript==
 
 (function() {
