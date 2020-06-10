@@ -2,14 +2,14 @@
 // @icon         https://jrol.xyz/favicon.ico
 // @name         Plan Repulse Helper
 // @namespace    https://jrol.xyz/game
-// @version      0.0.20200505
+// @version      0.0.20200610
 // @description  Plan Repulse 远征胖次
 // @author       木木祭曦
 // @grant        none
 // @match        https://jrol.xyz/game/game.php*
 // @match        https://jrol.xyz/game/index.php*
-// @homepageURL  https://github.com/cc13090101/Plan-Repulse-Helper
-// @downloadURL  https://github.com/cc13090101/Plan-Repulse-Helper/blob/master/Plan%20Repulse%20Helper.user.js
+// @homepageURL  https://github.com/cc13090101/Bondage-College-Helper
+// @downloadURL  https://github.com/cc13090101/Bondage-College-Helper/raw/master/Bondage-College-Helper.user.js
 // ==/UserScript==
 
 (function() {
@@ -20,6 +20,7 @@
     var flag_fleetTable = true;
     var flag_fleetStep1 = true;
     var flag_fleetStep2 = true;
+    var flag_fleetStep3 = true;
     var flag_buildings = true;
     var flag_research = true;
     var flag_officier = true;
@@ -28,20 +29,20 @@
     var password = "";//密码
     var model_fleetTable = "16";//舰队调度模式（15：探险；16：突袭）
 
-    var model_level = "1_4";//突袭难度（说明详见说明书），另外，请自行判断战斗技能是否符合带路要求
-    var ship203_num = "0";//困难+模式难度调整，无上限（我不信，字段的大小肯定限制了输入的最大值，只不过玩家达不到）
+    var model_level = "2_5";//突袭难度（说明详见说明书），另外，请自行判断战斗技能是否符合带路要求
+    var ship203_num = "35";//困难+模式难度调整，无上限（我不信，字段的大小肯定限制了输入的最大值，只不过玩家达不到）
     var timecount = 300;//页面操作、刷新倒计时（单位：秒）,防止会话超时
-    var cp_0 = "6428";// 默认舰队调度初始页面对应的岛屿
+    var cp_0 = "";// 默认舰队调度初始页面对应的岛屿
 
-    var galaxy_0 = "4";//默认出发岛屿 海域
-    var system_0 = "362";//默认出发岛屿 群岛
-    var planet_0 = "9";//默认出发岛屿 名次
+    var galaxy_0 = "";//默认出发岛屿 海域
+    var system_0 = "";//默认出发岛屿 群岛
+    var planet_0 = "";//默认出发岛屿 名次
     var type_0 = "1";//默认出发岛屿 类型（1：岛屿；2：废墟；3：人工岛）
     var target_mission_0 = "0";//默认出发岛屿 隐藏参数不知道什么用（默认为0，不要修改）
 
-    var galaxy_1 = "4";//默认抵达岛屿 海域
-    var system_1 = "362";//默认抵达岛屿 群岛
-    var planet_1 = "16";//默认抵达岛屿 名次
+    var galaxy_1 = "";//默认抵达岛屿 海域
+    var system_1 = "";//默认抵达岛屿 群岛
+    var planet_1 = "";//默认抵达岛屿 名次
     var type_1 = "1";//默认抵达岛屿 类型（1：岛屿；2：废墟；3：人工岛）
 
     var staytime_num = "1";//舰队调度时间（1至17）
@@ -182,22 +183,35 @@
                         case "2_1"://深海高速巡洋队：1海王星，战斗科技10以上
                             document.getElementById("ship203_input").value = ship203_num;//登陆舰（难度调整）
                             document.getElementById("ship216_input").value = "1";//1海王星（必备）
+                            document.getElementById("ship243_input").value = "1";//1马里兰（战斗回收）
                             break;
                         case "2_2"://深海巡弋舰队：1基洛夫，战斗科技12以上
                             document.getElementById("ship203_input").value = ship203_num;//登陆舰（难度调整）
                             document.getElementById("ship217_input").value = "1";//1基洛夫（必备）
+                            document.getElementById("ship243_input").value = "1";//1马里兰（战斗回收）
                             break;
                         case "2_3"://深海破袭支队：1肯特，战斗科技14以上
                             document.getElementById("ship203_input").value = ship203_num;//登陆舰（难度调整）
                             document.getElementById("ship218_input").value = "1";//1肯特（必备）
+                            document.getElementById("ship243_input").value = "1";//1马里兰（战斗回收）
                             break;
                         case "2_4"://深海船坞：1欧根亲王，战斗科技16以上
                             document.getElementById("ship203_input").value = ship203_num;//登陆舰（难度调整）
                             document.getElementById("ship219_input").value = "1";//1欧根亲王（必备）
+                            document.getElementById("ship243_input").value = "1";//1马里兰（战斗回收前置）
+                            document.getElementById("ship209_input").value = "2";//2祥凤（战斗回收）
+                            document.getElementById("ship241_input").value = "43000";//43000u47（自配）
+                            document.getElementById("ship228_input").value = "1200";//1200密苏里（自配）
+                            document.getElementById("ship227_input").value = "250";//250俾斯麦（自配）
                             break;
                         case "2_5"://深海主力纵队：1彭萨克拉，战斗科技17以上
                             document.getElementById("ship203_input").value = ship203_num;//登陆舰（难度调整）
                             document.getElementById("ship220_input").value = "1";//1彭萨克拉（必备）
+                            document.getElementById("ship243_input").value = "1";//1马里兰（战斗回收前置）
+                            document.getElementById("ship209_input").value = "2";//2祥凤（战斗回收）
+                            document.getElementById("ship241_input").value = "114000";//114000u47（自配）
+                            document.getElementById("ship228_input").value = "4500";//4500密苏里（自配）
+                            document.getElementById("ship227_input").value = "900";//900俾斯麦（自配）
                             break;
                     }
                     break;
@@ -265,6 +279,11 @@
                 input_fleetStep2.click();
             }
         }
+    }
+
+    //检测到突袭结束页面，立刻返回舰队调度页面
+     if(LocationUrl.indexOf(HostUrl + "game.php?page=fleetStep3") != -1 && flag_fleetStep3){
+         window.location.href = HostUrl + "game.php?page=fleetTable&cp=" + cp_0;
     }
 
     //主界面重写
@@ -341,16 +360,16 @@
     }
 
     function buildings_Add(){
-        tr_buildings_Add(1, 40);
-        tr_buildings_Add(2, 40);
-        tr_buildings_Add(3, 40);
-        tr_buildings_Add(6, 2);
+        tr_buildings_Add(1, 50);
+        tr_buildings_Add(2, 50);
+        tr_buildings_Add(3, 50);
+        tr_buildings_Add(6, 15);
         tr_buildings_Add(14, 20);
         tr_buildings_Add(15, 8);
         tr_buildings_Add(21, 25);
-        tr_buildings_Add(22, 15);
-        tr_buildings_Add(23, 15);
-        tr_buildings_Add(24, 15);
+        tr_buildings_Add(22, 20);
+        tr_buildings_Add(23, 20);
+        tr_buildings_Add(24, 20);
         tr_buildings_Add(31, 22);
         tr_buildings_Add(41, 1);
         tr_buildings_Add(44, 4);
