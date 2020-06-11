@@ -8,8 +8,8 @@
 // @grant        none
 // @match        https://jrol.xyz/game/game.php*
 // @match        https://jrol.xyz/game/index.php*
-// @homepageURL  https://github.com/cc13090101/Bondage-College-Helper
-// @downloadURL  https://github.com/cc13090101/Bondage-College-Helper/blob/master/Bondage-College-Helper.user.js
+// @homepageURL  https://github.com/cc13090101/Plan-Repulse-Helper
+// @downloadURL  https://github.com/cc13090101/Plan-Repulse-Helper/blob/master/Plan%20Repulse%20Helper.user.js
 // ==/UserScript==
 
 (function() {
